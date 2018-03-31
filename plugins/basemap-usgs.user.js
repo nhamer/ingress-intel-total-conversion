@@ -2,7 +2,7 @@
 // @id             iitc-plugin-basemap-usgs
 // @name           IITC plugin: Map layers from USGS
 // @category       Map Tiles
-// @version        0.1.0.@@DATETIMEVERSION@@
+// @version        0.1.1.@@DATETIMEVERSION@@
 // @namespace      https://github.com/jonatkins/ingress-intel-total-conversion
 // @updateURL      @@UPDATEURL@@
 // @downloadURL    @@DOWNLOADURL@@
@@ -35,6 +35,13 @@ function setup() {
     maxNativeZoom:16
   });
   window.layerChooser.addBaseLayer(mapLayer, 'USGS Topo');
+  var usgsImageryTopoUrl = 'https://basemap.nationalmap.gov/ArcGIS/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}';
+  mapLayer = L.tileLayer(usgsImageryTopoUrl, {
+    attribution:usgsAttr,
+    maxZoom:21,
+    maxNativeZoom:15
+  });
+  window.layerChooser.addBaseLayer(mapLayer, 'USGS ImageryTopo');
 }
 
 // PLUGIN END //////////////////////////////////////////////////////////
